@@ -1,0 +1,26 @@
+mysqlpiwigo:
+   image: mysql:5.5 
+   volumes:
+      - /home/piwigo/mysql/:/var/lib/mysql 
+   environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=piwigo
+      - MYSQL_USER=piwigo
+      - MYSQL_PASSWORD=password
+piwigo:
+   build: ./
+   container_name: alpine-piwigo
+   links:
+      - mysqlpiwigo:mysql 
+   volumes:
+      - /home/amontgomery/piwigo/data/galleries:/var/www/galleries
+      - /home/amontgomery/piwigo/data/local:/var/www/local
+      - /home/amontgomery/piwigo/data/plugins:/var/www/plugins
+      - /home/amontgomery/piwigo/data/themes:/var/www/themes
+      - /home/amontgomery/piwigo/cache:/var/www/_data/i
+      - /home/amontgomery/piwigo/upload:/var/www/upload"
+   ports:
+      - "80:80"
+   hostname: piwigo
+   domainname: MYDOMAIN.COM
+
