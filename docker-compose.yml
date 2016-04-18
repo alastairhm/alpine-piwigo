@@ -1,7 +1,7 @@
 mysqlpiwigo:
    image: mysql:5.5 
    volumes:
-      - /home/piwigo/mysql/:/var/lib/mysql 
+      - /home/amontgomery/piwigo/mysql/:/var/lib/mysql 
    environment:
       - MYSQL_ROOT_PASSWORD=rootpassword
       - MYSQL_DATABASE=piwigo

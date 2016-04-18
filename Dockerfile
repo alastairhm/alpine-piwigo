@@ -40,9 +40,16 @@ RUN wget -q -O piwigo.zip http://piwigo.org/download/dlcounter.php?code=latest &
     chown -R www-data. /var/www && \
     rm -r piwigo*
 
+RUN mkdir /template
+RUN mv /var/www/galleries /template/
+RUN mv /var/www/themes /template/
+RUN mv /var/www/plugins /template/
+RUN mv /var/www/local /template/
+
 EXPOSE 80
 
 VOLUME ["/var/www/galleries", "/var/www/themes", "/var/www/plugins", "/var/www/local", "/var/www/_data/i"]
 
-CMD php-fpm -D && lighttpd -D -f /etc/lighttpd/lighttpd.conf
+ADD start.sh /start.sh
+ENTRYPOINT /start.sh
 
