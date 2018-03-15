@@ -24,6 +24,7 @@ RUN apk --update add \
     php-ctype \
     php-dom \
     php-fpm \
+    php-mysqli \
     imagemagick \
     wget \
     unzip && \
