@@ -8,7 +8,7 @@ mysqlpiwigo:
       - MYSQL_USER=piwigo
       - MYSQL_PASSWORD=password
 piwigo:
-   build: ./
+   image: alastairhm/alpine-piwigo
    container_name: alpine-piwigo
    links:
       - mysqlpiwigo:mysql 
